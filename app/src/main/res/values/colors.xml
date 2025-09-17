@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FF90CAF9</color> <!-- biru muda -->
+    <color name="purple_500">#FF2196F3</color> <!-- biru utama -->
+    <color name="purple_700">#FF1565C0</color> <!-- biru gelap -->
+    <color name="teal_200">#FFFFA726</color>   <!-- oranye muda -->
+    <color name="teal_700">#FFF57C00</color>   <!-- oranye tua -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
