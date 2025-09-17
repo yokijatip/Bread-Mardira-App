@@ -1,14 +1,19 @@
 package com.gity.breadmardira.ui.auth.register
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.gity.breadmardira.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.gity.breadmardira.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
+
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         fun newInstance() = RegisterFragment()
@@ -18,14 +23,36 @@ class RegisterFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnRegister.setOnClickListener {
+            register()
+        }
+
+        viewModel.registerSuccess.observe(viewLifecycleOwner) { success ->
+            if (success) {
+                Toast.makeText(requireContext(), "Registrasi berhasil", Toast.LENGTH_SHORT).show()
+                findNavController().popBackStack() // Kembali Ke Login
+            } else {
+                Toast.makeText(requireContext(), "Registrasi gagal", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun register() {
+        val username = binding.etRegUsername.text.toString()
+        val password = binding.etRegPassword.text.toString()
+        viewModel.register(username, password)
     }
 }

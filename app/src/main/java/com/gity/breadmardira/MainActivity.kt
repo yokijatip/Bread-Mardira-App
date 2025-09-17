@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
             // Perform logout action
             // For example, navigate to the login screen
 
-            val navController = findNavController(R.id.nav_host_fragment_activity_main)
-            navController.navigate(R.id.navigation_dashboard)
+//            val navController = findNavController(R.id.nav_host_fragment_activity_main)
+//            navController.navigate(R.id.navigation_dashboard)
 
             finish()
         }
