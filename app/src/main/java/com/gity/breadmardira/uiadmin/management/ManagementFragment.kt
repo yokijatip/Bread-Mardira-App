@@ -1,4 +1,4 @@
-package com.gity.breadmardira.ui.explore
+package com.gity.breadmardira.uiadmin.management
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.gity.breadmardira.R
 
-class ExploreFragment : Fragment() {
+class ManagementFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ExploreFragment()
+        fun newInstance() = ManagementFragment()
     }
 
-    private val viewModel: ExploreViewModel by viewModels()
+    private val viewModel: ManagementViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class ExploreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_explore, container, false)
+        return inflater.inflate(R.layout.fragment_management, container, false)
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation_admin.xml"
+    app:startDestination="@+id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.gity.breadmardira.uiadmin.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <!--  Add Cart Fragment  -->
+    <fragment
+        android:id="@+id/navigation_management"
+        android:name="com.gity.breadmardira.uiadmin.management.ManagementFragment"
+        android:label="@string/title_management"
+        tools:layout="@layout/fragment_management" />
+
+    <fragment
+        android:id="@+id/navigation_orders"
+        android:name="com.gity.breadmardira.uiadmin.orders.OrdersFragment"
+        android:label="@string/title_orders"
+        tools:layout="@layout/fragment_orders" />
+
+</navigation>

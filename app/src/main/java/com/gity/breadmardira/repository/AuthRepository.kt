@@ -20,8 +20,15 @@ class AuthRepository(
 
     suspend fun register(email: String, password: String): Result<Unit> {
         return try {
-            firebaseAuth.createUserWithEmailAndPassword(email, password).await()
-            Result.success(Unit)
+            val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            val user = authResult.user
+            if (user != null) {
+                val userMap = hashMapOf("email" to email, "role" to "customer")
+                FirebaseFirestore.getInstance().collection("users").document(user.uid).set(userMap).await()
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Failed to create user"))
+            }
         } catch (e: Exception) {
             Result.failure(e)
         }

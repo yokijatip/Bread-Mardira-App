@@ -1,7 +1,7 @@
-package com.gity.breadmardira.ui.order
+package com.gity.breadmardira.ui.cart
 
 import androidx.lifecycle.ViewModel
 
-class OrderViewModel : ViewModel() {
+class CartViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

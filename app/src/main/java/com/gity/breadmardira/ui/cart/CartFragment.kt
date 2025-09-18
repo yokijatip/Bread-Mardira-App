@@ -1,4 +1,4 @@
-package com.gity.breadmardira.ui.order
+package com.gity.breadmardira.ui.cart
 
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.gity.breadmardira.R
 
-class OrderFragment : Fragment() {
+class CartFragment : Fragment() {
 
     companion object {
-        fun newInstance() = OrderFragment()
+        fun newInstance() = CartFragment()
     }
 
-    private val viewModel: OrderViewModel by viewModels()
+    private val viewModel: CartViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +26,6 @@ class OrderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_order, container, false)
+        return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 }
