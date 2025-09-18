@@ -1,29 +1,19 @@
 package com.gity.breadmardira.ui.auth.register
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.gity.breadmardira.database.AppDatabase
-import com.gity.breadmardira.model.User
-import com.gity.breadmardira.repository.UserRepository
+import androidx.lifecycle.*
+import com.gity.breadmardira.repository.AuthRepository
 import kotlinx.coroutines.launch
 
-class RegisterViewModel(application: Application) : AndroidViewModel(application) {
+class RegisterViewModel(
+    private val repository: AuthRepository = AuthRepository()
+) : ViewModel() {
 
-    private val repo = UserRepository(AppDatabase.getInstance(application).userDao())
-    private val _registerSuccess = MutableLiveData<Boolean>()
-    val registerSuccess: LiveData<Boolean> = _registerSuccess
+    private val _registerState = MutableLiveData<Result<Unit>>()
+    val registerState: LiveData<Result<Unit>> get() = _registerState
 
-    fun register(username: String, password: String) {
+    fun register(email: String, password: String) {
         viewModelScope.launch {
-            try {
-                repo.register(User(username = username, password = password))
-                _registerSuccess.value = true
-            } catch (e: Exception) {
-                _registerSuccess.value = false // misal username sudah ada
-            }
+            _registerState.value = repository.register(email, password)
         }
     }
 }

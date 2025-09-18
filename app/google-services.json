@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523728318558",
+    "project_id": "breadmardira",
+    "storage_bucket": "breadmardira.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523728318558:android:154fa8a0c64958510304cf",
+        "android_client_info": {
+          "package_name": "com.gity.breadmardira"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQfXR-MtU5R4DzGL6Z1bDmW9s5ENC9To0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,13 @@
 package com.gity.breadmardira
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.gity.breadmardira.databinding.ActivityAuthBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class AuthActivity : AppCompatActivity() {
 
@@ -21,5 +23,13 @@ class AuthActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // di AuthActivity.onCreate
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            // langsung ke MainActivity
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
     }
 }

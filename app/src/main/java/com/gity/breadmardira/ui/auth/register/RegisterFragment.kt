@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.gity.breadmardira.R
 import com.gity.breadmardira.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -15,15 +16,7 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
-    companion object {
-        fun newInstance() = RegisterFragment()
-    }
-
     private val viewModel: RegisterViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,22 +30,34 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnRegister.setOnClickListener {
-            register()
+            val email = binding.etRegEmail.text.toString()
+            val password = binding.etRegPassword.text.toString()
+            viewModel.register(email, password)
         }
 
-        viewModel.registerSuccess.observe(viewLifecycleOwner) { success ->
-            if (success) {
-                Toast.makeText(requireContext(), "Registrasi berhasil", Toast.LENGTH_SHORT).show()
-                findNavController().popBackStack() // Kembali Ke Login
-            } else {
-                Toast.makeText(requireContext(), "Registrasi gagal", Toast.LENGTH_SHORT).show()
+        navigateToLogin()
+
+        viewModel.registerState.observe(viewLifecycleOwner) { result ->
+            result.onSuccess {
+                Toast.makeText(requireContext(), "Register sukses", Toast.LENGTH_SHORT).show()
+                // pindah ke login fragment utama
+                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            }.onFailure {
+                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun register() {
-        val username = binding.etRegUsername.text.toString()
-        val password = binding.etRegPassword.text.toString()
-        viewModel.register(username, password)
+    private fun navigateToLogin() {
+        binding.tvToLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+//            pop backstack
+            findNavController().popBackStack()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
