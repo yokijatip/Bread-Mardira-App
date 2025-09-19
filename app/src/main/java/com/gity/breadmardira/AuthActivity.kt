@@ -13,12 +13,11 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityAuthBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        // Tampilkan splash lebih dulu
+        setContentView(R.layout.activity_splash)
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
-            // Ambil role user dari Firestore
             Firebase.firestore.collection("users")
                 .document(currentUser.uid)
                 .get()
@@ -32,9 +31,20 @@ class AuthActivity : AppCompatActivity() {
                     finish()
                 }
                 .addOnFailureListener {
-                    // gagal ambil role -> fallback ke login
+                    // jika gagal cek role, tampilkan Auth UI normal
+                    showAuthUI()
                 }
+        } else {
+            // Tidak login, tampilkan Auth UI normal
+            showAuthUI()
         }
     }
+
+    private fun showAuthUI() {
+        // baru load tampilan login/register
+        val binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
 }
+
 

@@ -1,30 +1,26 @@
-package com.gity.breadmardira.ui.home
+package com.gity.breadmardira.uiadmin.management.viewProduct
 
 import androidx.lifecycle.*
 import com.gity.breadmardira.model.Product
 import com.gity.breadmardira.repository.ProductRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+class ViewProductViewModel(
     private val repository: ProductRepository = ProductRepository()
 ) : ViewModel() {
 
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>> = _products
 
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> = _error
 
-    init {
-        fetchProducts()
-    }
-
-    fun fetchProducts() {
+    fun loadProducts() {
         viewModelScope.launch {
             val result = repository.getAllProducts()
             result
-                .onSuccess { list -> _products.value = list }
-                .onFailure { e -> _error.value = e.message ?: "Terjadi kesalahan" }
+                .onSuccess { _products.value = it }
+                .onFailure { e -> _error.value = e.message }
         }
     }
 }

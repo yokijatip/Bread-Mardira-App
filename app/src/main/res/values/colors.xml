@@ -7,4 +7,10 @@
     <color name="teal_700">#FFF57C00</color>   <!-- oranye tua -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--  Warna Untuk di halaman Management Admin Fragment  -->
+    <!--  Red 400, Purple 400, Blue 400 -->
+    <color name="red_400">#EF5350</color>
+    <color name="purple_400">#AB47BC</color>
+    <color name="blue_400">#42A5F5</color>
 </resources>

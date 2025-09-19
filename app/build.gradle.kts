@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
-//    Add the google services Gradle Plugin
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.activity)
+    implementation(libs.play.services.location)
     val room_version = "2.8.0"
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:${room_version}")
@@ -56,7 +58,15 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
 
+//    dependencies RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+// For control over item selection of both touch and mouse driven selection
 
+//    Bumptech glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+//    Kotlin Parcelize
+    implementation("org.jetbrains.kotlin:kotlin-parcelize-runtime:1.9.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

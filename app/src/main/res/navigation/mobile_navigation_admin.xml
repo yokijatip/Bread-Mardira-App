@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation_admin.xml"
+    android:id="@+id/mobile_navigation_admin"
     app:startDestination="@+id/navigation_dashboard">
 
     <fragment
@@ -11,17 +11,38 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
-    <!--  Add Cart Fragment  -->
     <fragment
         android:id="@+id/navigation_management"
         android:name="com.gity.breadmardira.uiadmin.management.ManagementFragment"
         android:label="@string/title_management"
-        tools:layout="@layout/fragment_management" />
+        tools:layout="@layout/fragment_management">
+
+        <!-- Action ke Add Product -->
+        <action
+            android:id="@+id/action_navigation_management_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+
+        <!-- Action ke View Products -->
+        <action
+            android:id="@+id/action_navigation_management_to_viewProductsFragment"
+            app:destination="@id/viewProductsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.gity.breadmardira.uiadmin.management.addProduct.AddProductFragment"
+        android:label="Tambah Produk"
+        tools:layout="@layout/fragment_add_product" />
+
+    <fragment
+        android:id="@+id/viewProductsFragment"
+        android:name="com.gity.breadmardira.uiadmin.management.viewProduct.ViewProductFragment"
+        android:label="Lihat Produk"
+        tools:layout="@layout/fragment_view_product" />
 
     <fragment
         android:id="@+id/navigation_orders"
         android:name="com.gity.breadmardira.uiadmin.orders.OrdersFragment"
         android:label="@string/title_orders"
         tools:layout="@layout/fragment_orders" />
-
 </navigation>
