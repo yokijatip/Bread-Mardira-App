@@ -1,5 +1,6 @@
 package com.gity.breadmardira.uiadmin.management.viewProduct
 
+import ProductAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gity.breadmardira.databinding.FragmentViewProductBinding
-import com.gity.breadmardira.ui.home.ProductAdapter
-import com.gity.breadmardira.uiadmin.management.viewProduct.ViewProductViewModel
 
 class ViewProductsFragment : Fragment() {
 
@@ -31,7 +30,10 @@ class ViewProductsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productAdapter = ProductAdapter(emptyList())
+        productAdapter = ProductAdapter(emptyList()) {
+            // Handle item click if needed
+            Toast.makeText(requireContext(), "Item clicked: ${it.name}", Toast.LENGTH_SHORT).show()
+        }
         binding.rvProducts.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = productAdapter

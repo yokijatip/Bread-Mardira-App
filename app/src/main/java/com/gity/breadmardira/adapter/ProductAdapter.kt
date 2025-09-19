@@ -2,6 +2,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gity.breadmardira.databinding.ItemProductBinding
+import com.bumptech.glide.Glide
 import com.gity.breadmardira.model.Product
 
 class ProductAdapter(
@@ -14,11 +15,10 @@ class ProductAdapter(
         fun bind(product: Product) {
             binding.tvName.text = product.name
             binding.tvPrice.text = "Rp ${product.price}"
-            binding.imgProduct.setImageResource(
-                binding.root.context.resources.getIdentifier(
-                    product.imageRes, "drawable", binding.root.context.packageName
-                )
-            )
+            Glide.with(binding.root.context)
+                .load(product.imageRes)
+                .into(binding.imgProduct)
+
             binding.root.setOnClickListener { onItemClick(product) }
         }
     }

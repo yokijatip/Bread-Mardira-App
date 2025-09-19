@@ -9,19 +9,29 @@
         android:id="@+id/navigation_home"
         android:name="com.gity.breadmardira.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <!-- Action ke detailProductFragment; ID action ini menentukan nama method SafeArgs -->
         <action
             android:id="@+id/action_navigation_home_to_detailProductFragment"
             app:destination="@id/detailProductFragment" />
     </fragment>
 
-<!--  Add Cart Fragment  -->
+    <!--  Add Cart Fragment  -->
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.gity.breadmardira.ui.cart.CartFragment"
         android:label="@string/title_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_navigation_cart_to_customerDataFragment"
+            app:destination="@id/customerDataFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/customerDataFragment"
+        android:name="com.gity.breadmardira.ui.cart.customerData.CustomerDataFragment"
+        android:label="Data Pemesan"
+        tools:layout="@layout/fragment_customer_data"/>
 
     <fragment
         android:id="@+id/navigation_notifications"

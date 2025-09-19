@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.gity.breadmardira.R
 
-class OrderFragment : Fragment() {
+class OrderDetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = OrderFragment()
+        fun newInstance() = OrderDetailFragment()
     }
 
     private val viewModel: OrderDetailViewModel by viewModels()
