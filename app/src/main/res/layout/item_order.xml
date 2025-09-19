@@ -1,60 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <!-- Gambar roti -->
-        <ImageView
-            android:id="@+id/imgPesanan"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_image_placeholder"
-            android:contentDescription="Gambar Roti Dipesan"/>
-
-        <!-- Info pesanan -->
+        <!-- Header: Order ID and Status -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="12dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/tvPesananName"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvOrderId"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Nama Roti"
+                android:layout_weight="1"
+                android:textStyle="bold"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textColor="@android:color/black"
+                tools:text="#ORD123456" />
 
             <TextView
-                android:id="@+id/tvPesananQuantity"
+                android:id="@+id/tvOrderStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jumlah: 1"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp"/>
+                android:background="@drawable/bg_status_rounded"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textAllCaps="true"
+                tools:text="PENDING" />
 
-            <TextView
-                android:id="@+id/tvPesananTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total: Rp 0"
-                android:textSize="14sp"
-                android:textColor="@android:color/holo_red_dark"
-                android:layout_marginTop="2dp"/>
         </LinearLayout>
+
+        <!-- Customer Name -->
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            tools:text="John Doe" />
+
+        <!-- Order Total -->
+        <TextView
+            android:id="@+id/tvOrderTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_400"
+            android:drawableStart="@drawable/ic_money"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            tools:text="Rp 150.000" />
+
+        <!-- Address -->
+        <TextView
+            android:id="@+id/tvOrderAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="Jl. Sudirman No. 123, Jakarta Selatan" />
+
+        <!-- Bottom: Date and Item Count -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvOrderDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                tools:text="15 Oct 2024, 14:30" />
+
+            <TextView
+                android:id="@+id/tvItemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"
+                android:drawableStart="@drawable/ic_shopping_bag"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                tools:text="3 item(s)" />
+
+        </LinearLayout>
+
     </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+
+</androidx.cardview.widget.CardView>

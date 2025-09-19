@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/viewProductsFragment"
-        android:name="com.gity.breadmardira.uiadmin.management.viewProduct.ViewProductFragment"
+        android:name="com.gity.breadmardira.uiadmin.management.viewProduct.ViewProductsFragment"
         android:label="Lihat Produk"
         tools:layout="@layout/fragment_view_product" />
 
@@ -44,5 +44,20 @@
         android:id="@+id/navigation_orders"
         android:name="com.gity.breadmardira.uiadmin.orders.OrdersFragment"
         android:label="@string/title_orders"
-        tools:layout="@layout/fragment_orders" />
+        tools:layout="@layout/fragment_orders">
+        <action
+            android:id="@+id/action_navigation_orders_to_detailOrderFragment"
+            app:destination="@id/detailOrderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailOrderFragment"
+        android:name="com.gity.breadmardira.uiadmin.orders.detail.OrderDetailFragment"
+        android:label="Detail Order"
+        tools:layout="@layout/fragment_detail_order">
+        <argument
+            android:name="order"
+            app:argType="com.gity.breadmardira.model.Order" />
+    </fragment>
+
 </navigation>
