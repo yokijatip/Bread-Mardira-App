@@ -17,15 +17,17 @@
         android:label="@string/title_management"
         tools:layout="@layout/fragment_management">
 
-        <!-- Action ke Add Product -->
         <action
             android:id="@+id/action_navigation_management_to_addProductFragment"
             app:destination="@id/addProductFragment" />
 
-        <!-- Action ke View Products -->
         <action
             android:id="@+id/action_navigation_management_to_viewProductsFragment"
             app:destination="@id/viewProductsFragment" />
+
+        <action
+            android:id="@+id/action_navigation_management_to_deleteProductFragment"
+            app:destination="@id/deleteProductFragment" />
     </fragment>
 
     <fragment
@@ -38,7 +40,30 @@
         android:id="@+id/viewProductsFragment"
         android:name="com.gity.breadmardira.uiadmin.management.viewProduct.ViewProductsFragment"
         android:label="Lihat Produk"
-        tools:layout="@layout/fragment_view_product" />
+        tools:layout="@layout/fragment_view_product">
+        <action
+            android:id="@+id/action_viewProductsFragment_to_updateProductFragment"
+            app:destination="@id/updateProductFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/updateProductFragment"
+        android:name="com.gity.breadmardira.uiadmin.management.updateProduct.UpdateProductFragment"
+        android:label="Update Produk"
+        tools:layout="@layout/fragment_update_product">
+
+        <!-- Tambahkan arguments untuk membawa data product -->
+        <argument
+            android:name="product"
+            app:argType="com.gity.breadmardira.model.Product" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/deleteProductFragment"
+        android:name="com.gity.breadmardira.uiadmin.management.deleteProduct.DeleteProductFragment"
+        android:label="Hapus Produk"
+        tools:layout="@layout/fragment_delete_product"/>
 
     <fragment
         android:id="@+id/navigation_orders"

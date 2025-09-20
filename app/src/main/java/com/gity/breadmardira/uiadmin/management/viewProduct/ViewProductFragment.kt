@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gity.breadmardira.databinding.FragmentViewProductBinding
 
@@ -30,10 +31,13 @@ class ViewProductsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        productAdapter = ProductAdapter(emptyList()) {
-            // Handle item click if needed
-            Toast.makeText(requireContext(), "Item clicked: ${it.name}", Toast.LENGTH_SHORT).show()
+        productAdapter = ProductAdapter(emptyList()) { selectedProduct ->
+            // Navigate ke update product dengan membawa data product
+            val action = ViewProductsFragmentDirections
+                .actionViewProductsFragmentToUpdateProductFragment(selectedProduct)
+            findNavController().navigate(action)
         }
+
         binding.rvProducts.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = productAdapter

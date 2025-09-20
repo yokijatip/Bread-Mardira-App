@@ -30,4 +30,22 @@ class ProductRepository {
         }
     }
 
+    suspend fun updateProduct(product: Product): Result<Void?> {
+        return try {
+            productsRef.document(product.id).set(product).await()
+            Result.success(null)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteProduct(productId: String): Result<Void?> {
+        return try {
+            productsRef.document(productId).delete().await()
+            Result.success(null)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
 }

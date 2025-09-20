@@ -42,6 +42,12 @@ class ManagementFragment : Fragment() {
                 R.id.action_navigation_management_to_viewProductsFragment
             )
         }
+
+        binding.cardDeleteProduct.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_navigation_management_to_deleteProductFragment
+            )
+        }
     }
 
     override fun onDestroyView() {

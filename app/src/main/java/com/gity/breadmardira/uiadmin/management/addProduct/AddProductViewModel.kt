@@ -16,15 +16,12 @@ class AddProductViewModel(
     val addState: StateFlow<Result<Void?>?> = _addState
 
     // Daftar nama file gambar di drawable
-    private val imageList = listOf("image1", "image2", "image3", "image4", "image5")
-    // Daftar ekstensi file gambar yang mungkin
-    private val imageExtensions = listOf(".jpg", ".jpeg")
+    private val imageList = listOf("https://res.cloudinary.com/dsptxtm6k/image/upload/v1758271625/image4_rpxail.jpg", "https://res.cloudinary.com/dsptxtm6k/image/upload/v1758271625/image1_cwdbby.jpg", "https://res.cloudinary.com/dsptxtm6k/image/upload/v1758271625/image2_zxm5fi.jpg", "https://res.cloudinary.com/dsptxtm6k/image/upload/v1758271624/image3_kutsrs.jpg", "https://res.cloudinary.com/dsptxtm6k/image/upload/v1758271624/image5_ijb0we.jpg")
 
     fun addProduct(name: String, desc: String, price: Double) {
         // Pilih gambar acak dari daftar beserta ekstensinya
         val randomImageName = imageList.random()
-        val randomImageExtension = imageExtensions.random()
-        val randomImageResName = "$randomImageName$randomImageExtension"
+        val randomImageResName = randomImageName
 
         val product = Product(name = name, description = desc, price = price, imageRes = randomImageResName)
 
